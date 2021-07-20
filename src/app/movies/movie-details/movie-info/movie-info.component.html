@@ -1,0 +1,87 @@
+<div class="poster">
+  <img *ngIf="movieDetails.poster_path; else noImage"
+       [src]="env + movieDetails.poster_path" [alt]="movieDetails.title">
+</div>
+<ng-template #noImage>
+  <img class="no-image" src="../../../../assets/no-image.png" alt="no image">
+</ng-template>
+<div class="movie-info">
+  <div class="movie-info-wrapper">
+    <div class="basic-details">
+      <h2 class="title">{{movieDetails.title}}
+        <span class="release-date" *ngIf="movieDetails.release_date">
+      {{ ' (' + movieDetails.release_date.slice(0, 4) + ')' }}
+      </span>
+      </h2>
+      <app-movie-rating [rating]="movieDetails.vote_average"
+                        [fontSize]="'1.5rem'"
+                        [top]="'1.2rem'"
+                        [right]="'1.2rem'">
+      </app-movie-rating>
+      <div class="stats">
+        <span *ngIf="movieDetails.original_title">
+          <span>Original Title: </span>
+          <span [ngStyle]="{fontStyle: 'italic'}">
+            {{movieDetails.original_title }}
+          </span>
+        </span>
+        <span *ngIf="movieDetails.original_language">
+          {{ ' &bull; ' + 'Original Language: ' + movieDetails.original_language.toUpperCase() }}
+        </span>
+            <span *ngIf="movieDetails.runtime">
+          {{' &bull; ' + (movieDetails.runtime / 60 | round ) + 'h ' +
+            (movieDetails.runtime % 60 === 0  ? '00' : movieDetails.runtime % 60) + 'm'}}
+        </span>
+      </div>
+
+    </div>
+    <div class="action-icons" *ngIf="!isAuthenticated">
+      <i class="far fa-bookmark"
+       matTooltipClass="tooltip"
+       matTooltip="Log in to add movie to your watchlist">
+      </i>
+      <i class="far fa-heart"
+        matTooltipClass="tooltip"
+        matTooltip="Log in to add movie to your favorites">
+      </i>
+    </div>
+    <div class="action-icons" *ngIf="isAuthenticated">
+      <i class="far fa-bookmark active" (click)="onWatchlistSelected($event)" [ngClass]="{ selected: watchlistSelected }"
+         matTooltipClass="tooltip"
+         matTooltip="Add movie to your watchlist">
+      </i>
+      <i class="far fa-heart active" (click)="onFavoritesSelected($event)" [ngClass]="{ selected: favoritesSelected }"
+         matTooltipClass="tooltip"
+         matTooltip="Add movie to your favorites">
+      </i>
+    </div>
+    <h3 class="tagline" *ngIf="movieDetails.tagline">{{ movieDetails.tagline }} </h3>
+    <div class="overview">
+      <h4 class="section-title">Overview</h4>
+      <p>{{ movieDetails.overview }}</p>
+    </div>
+    <div class="credits" *ngIf="movieDetails.credits.crew.length">
+      <div class="crew-member">
+        <h4>Directed by</h4>
+        <span class="name" *ngFor="let person of findCrewMembers(movieDetails.credits.crew, 'director');
+                    last as isLast">{{person.name}}
+          <span *ngIf="!isLast">, </span></span>
+      </div>
+      <div class="crew-member" *ngIf="findCrewMembers(movieDetails.credits.crew, 'writer').length; else screenplay">
+        <h4 >Written by</h4>
+        <span class="name" *ngFor="let person of findCrewMembers(movieDetails.credits.crew, 'writer');
+                    last as isLast">{{person.name}}<span *ngIf="!isLast">, </span></span>
+      </div>
+      <ng-template #screenplay class="crew-member">
+        <h4>Written by</h4>
+        <span class="name" *ngFor="let person of findCrewMembers(movieDetails.credits.crew, 'screenplay');
+                  last as isLast">{{person.name}}<span *ngIf="!isLast">, </span></span>
+      </ng-template>
+    </div>
+  </div>
+  <div class="genres">
+        <span class="btn btn-selected" *ngFor="let genre of movieDetails.genres">
+            {{genre.name}}
+        </span>
+  </div>
+</div>

@@ -1,0 +1,95 @@
+.movie-list-container {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.full-screen-layout {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.btn {
+    width: 100%;
+    font-size: 1.2em;
+    margin-bottom: 1em;
+}
+
+.no-movies {
+  font-size: 1.5rem;
+  padding-top: 1.2rem;
+  text-align: center;
+}
+
+.pagination /deep/ .ngx-pagination {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.pagination /deep/ .ngx-pagination .current {
+  background: var(--clr-red);
+}
+
+.pagination /deep/ .ngx-pagination .current .ng-star-inserted {
+  color: #fff;
+  outline: none;
+  border: none;
+}
+
+.pagination /deep/ .ngx-pagination .pagination-previous.disabled .ng-star-inserted,
+.pagination /deep/ .ngx-pagination .pagination-previous.disabled.ng-star-inserted::before,
+.pagination /deep/ .ngx-pagination .pagination-next.disabled .ng-star-inserted,
+.pagination /deep/ .ngx-pagination .pagination-next.disabled.ng-star-inserted::after {
+  color: #616060;
+
+}
+
+.pagination /deep/ .ngx-pagination :not(.disabled) .ng-star-inserted:hover,
+.pagination /deep/ .ngx-pagination .pagination-previous:not(.disabled) .ng-star-inserted:hover{
+  color: black;
+  background-color: #fff;
+}
+
+.pagination /deep/ .ngx-pagination .pagination-next,
+.pagination /deep/ .ngx-pagination .pagination-previous,
+.pagination /deep/ .ngx-pagination .ng-star-inserted {
+  color: var(--clr-grey);
+}
+
+@media screen and (max-width: 1260px) {
+  .movie-list-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .full-screen-layout {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .movie-list-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .full-screen-layout {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .movie-list-container {
+    grid-template-columns:  1fr;
+  }
+
+  .full-screen-layout {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pagination /deep/ .ngx-pagination .ng-star-inserted {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .full-screen-layout {
+    grid-template-columns: 1fr;
+  }
+
+}

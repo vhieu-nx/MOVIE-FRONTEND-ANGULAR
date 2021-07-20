@@ -1,0 +1,49 @@
+.movie-card {
+    text-align: center;
+    color: var(--clr-white);
+    outline: none;
+}
+
+.image-container {
+  width: 100%;
+  position: relative
+}
+
+.movie-card img {
+  transition: var(--transition);
+}
+
+.movie-card:hover {
+    cursor: pointer;
+}
+
+.movie-card:active {
+    outline: none;
+}
+
+.movie-card:hover img {
+  transform: scale(1.05);
+}
+
+.movie-info {
+  margin-top: .8em;
+}
+
+.title {
+    font-size: 1em;
+}
+
+.release-date, .genres {
+  font-size: .8em;
+}
+
+.release-date {
+    margin: .3em;
+}
+
+.remove-btn {
+  margin-bottom: .8rem;
+  text-align: center;
+}
+
+

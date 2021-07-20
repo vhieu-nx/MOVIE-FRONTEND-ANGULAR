@@ -1,0 +1,54 @@
+app-movie-list {
+    flex-grow: 1;
+}
+
+.filter-buttons {
+    text-align: center;
+    padding-bottom: 1.4em;
+}
+
+.btn {
+    margin: .3em;
+}
+
+.btn:hover {
+    color: white;
+}
+
+.main-section {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  grid-gap: 1rem;
+}
+
+app-filter-panel {
+    width: 300px;
+    flex: 0 0 auto;
+}
+
+/* for spinner */
+app-movie-list {
+    text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+@media screen and (max-width: 660px) {
+  .main-section {
+    /*grid-template-columns: 1fr;*/
+    grid-template-columns: 300px;
+    justify-content: center;
+  }
+
+  app-filter-panel {
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .btn {
+    font-size: .7em;
+  }
+}

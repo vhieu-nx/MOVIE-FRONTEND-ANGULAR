@@ -1,0 +1,50 @@
+<div class="login-register">
+  <div class="form-container">
+    <ng-container *ngIf="authService.isLoading">
+      <app-loading-spinner></app-loading-spinner>
+    </ng-container>
+    <ng-container *ngIf="!authService.isLoading">
+      <h2>Sign In</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <mat-form-field class="form-field">
+          <mat-label>Email</mat-label>
+          <input type="email"
+                 autocomplete="off"
+                 matInput
+                 formControlName="email"
+                 required
+                 email>
+          <mat-error *ngIf="loginForm.get('email').hasError('required')">
+            Email is required
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('email').hasError('pattern') && !loginForm.get('email').hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field">
+          <mat-label>Password</mat-label>
+          <input type="password"
+                 autocomplete="off"
+                 matInput
+                 formControlName="password"
+                 [errorStateMatcher]="matcher"
+                 required>
+          <mat-error *ngIf="loginForm.get('password').hasError('required')">
+            Password is required
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('password').hasError('minlength') && !loginForm.get('password').hasError('required')">
+            Password must have minimum 8 and maximum 256 characters
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('password').hasError('maxlength') && !loginForm.get('password').hasError('required')">
+            Password must have minimum 8 and maximum 256 characters
+          </mat-error>
+        </mat-form-field>
+        <button class="btn btn-action"
+                [disabled]="!loginForm.valid" [class.disabled]="!loginForm.valid">Login</button>
+        <p class="cta">Don't have an account yet? <span routerLink="/auth/register">Sign up</span></p>
+      </form>
+    </ng-container>
+  </div>
+</div>
+
+

@@ -1,0 +1,19 @@
+<ng-container *ngIf="cast.length">
+  <div class="header">
+    <h4>Cast</h4>
+    <mat-slide-toggle [(ngModel)]="isChecked">Show All</mat-slide-toggle>
+  </div>
+  <div class="cast-wrapper">
+    <div class="person" *ngFor="let actor of cast.slice(0, isChecked ? cast.length - 1 : 7)">
+      <div class="photo-container">
+        <img *ngIf="actor?.profile_path; else noImage" [src]="env + actor?.profile_path" [alt]="actor?.name">
+        <ng-template #noImage>
+          <img class="no-image" src="../../../../assets/no-image.png" alt="no image">
+        </ng-template>
+      </div>
+      <h5 class="name">{{actor?.name}}</h5>
+      <p class="character">{{actor?.character}}</p>
+    </div>
+  </div>
+</ng-container>
+

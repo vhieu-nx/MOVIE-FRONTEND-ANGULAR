@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,500&display=swap');
+
+:root {
+    --clr-bg-primary: #121012;
+    --clr-bg-secondary: #1b1b1f;
+    --clr-red: #e21f3f;
+    --clr-blue: #216ea5;
+    --clr-grey: #adacbb;
+    --clr-white: #fff;
+    --ff-primary: "Roboto", sans-serif;
+    --max-width: 1170px;
+    --border-radius: 12px;
+    --transition:  all 0.2s ease-in;
+}
+
+*, ::after, ::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: var(--clr-grey);
+    font-family: var(--ff-primary);
+    font-size: 1rem;
+    background: var(--clr-bg-primary);
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 1.4rem;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    color: var(--clr-grey);
+    background: var(--clr-bg-secondary);
+    font-family: inherit;
+    font-size: .9rem;
+    padding: .4em 1em;
+    transition: var(--transition);
+}
+
+.btn-action {
+  font-size: 1rem;
+}
+
+.btn-selected, .btn-action {
+    color: var(--clr-white);
+    background: var(--clr-red);
+}
+
+.btn:hover, .btn:focus {
+  color: var(--clr-white);
+  box-shadow: 0 0 0 2px var(--clr-red), 0 0 0 2px var(--clr-red);
+  cursor: pointer;
+}
+
+.btn-action:hover, .btn-action:focus {
+  background-color: #991818;
+  box-shadow: unset;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+
+h1, h2, h3, h4 {
+  line-height: 1;
+}
+
+a {
+    text-decoration: none;
+    color: var(--clr-white);
+}
+
+ul li {
+    list-style-type: none;
+}
+
+select, input {
+    border: none;
+    outline: none;
+}
+
+input {
+  background: var(--clr-bg-primary);
+  color: var(--clr-grey)
+}
+
+select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+a:hover, select:hover, button:hover {
+    cursor: pointer;
+}
+
+img {
+    width: 100%;
+    border-radius: var(--border-radius);
+}
+
+img.no-image {
+  background: white;
+}
+
+.hidden {
+  display: none
+}
+
+@media screen and (max-width: 1260px) {
+  .container {
+    max-width:  960px;
+  }
+}
+
+
+@media screen and (max-width: 1000px) {
+  .container {
+    max-width:  800px;
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .container {
+    max-width:  640px;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .container {
+    max-width:  500px;
+  }
+}
+
+.mat-tooltip.tooltip {
+  font-size: .8rem;
+}
+
+.fade-in {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeIn  {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.hide-overflow {
+  overflow: hidden;
+}
+
+::-moz-focus-inner {
+  border: none;
+}
+
+a:focus-visible {
+  outline: none;
+}

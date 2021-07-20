@@ -1,0 +1,70 @@
+<nav class="navbar container">
+  <div class="logo-wrapper">
+    <h1 routerLink="/movies" class="logo">
+      <span id="white-logo">Movie</span><span id="red-logo">Watcher</span>
+    </h1>
+    <app-movie-search></app-movie-search>
+  </div>
+
+  <div
+    class="menu-btn hide-desktop show-mobile"
+    (click)="toggleMenuBtn()"
+    [class.open]="isOpen"
+  >
+    <span class="burger"></span>
+  </div>
+  <nav>
+    <ul class="menu" [class.show-menu]="isOpen">
+      <li>
+        <a
+          routerLink="/movies"
+          routerLinkActive="active"
+          (click)="closeMenu()"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="menu-item"
+          >Movies</a
+        >
+      </li>
+      <li>
+        <a
+          *ngIf="isAuthenticated"
+          routerLink="/watchlist"
+          routerLinkActive="active"
+          (click)="closeMenu()"
+          class="menu-item"
+          >Watchlist</a
+        >
+      </li>
+      <li>
+        <a
+          *ngIf="isAuthenticated"
+          routerLink="/favorites"
+          routerLinkActive="active"
+          (click)="closeMenu()"
+          class="menu-item"
+          >Favorites</a
+        >
+      </li>
+      <li>
+        <button
+          *ngIf="!isAuthenticated"
+          routerLink="/auth/login"
+          (click)="closeMenu()"
+          class="btn btn-action btn-login"
+        >
+          Login
+        </button>
+      </li>
+      <li>
+        <button
+          *ngIf="isAuthenticated"
+          tabindex="0"
+          class="btn btn-action btn-logout"
+          (click)="onLogout()"
+        >
+          Logout
+        </button>
+      </li>
+    </ul>
+  </nav>
+</nav>

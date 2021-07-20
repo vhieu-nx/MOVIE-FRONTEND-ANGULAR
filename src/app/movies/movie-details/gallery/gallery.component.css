@@ -1,0 +1,58 @@
+.gallery {
+  margin-top: 2rem;
+  position: relative;
+}
+
+.fa-play {
+  position: absolute;
+  z-index: 100002;
+  font-size: 2.5rem;
+  bottom: 1rem;
+  left: 1rem;
+  color: var(--clr-white);
+}
+
+.fa-play:hover {
+  cursor: pointer;
+}
+
+.carousel {
+  height: 600px !important;
+}
+
+.header {
+  margin-bottom: .8rem;
+  color: var(--clr-white);
+}
+
+@media screen and (max-width: 1260px) {
+  .carousel {
+    height: 500px !important;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .carousel {
+    height:  400px !important;
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .carousel {
+    height:  350px !important;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .carousel {
+    height:  250px !important;
+  }
+  ::ng-deep .carousel-arrow {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .fa-play {
+    font-size: 2rem;
+  }
+}

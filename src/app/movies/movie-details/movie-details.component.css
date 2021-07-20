@@ -1,0 +1,32 @@
+.movie-details-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-info-container {
+  color: var(--clr-white);
+  display: grid;
+  grid-gap: 1.5em;
+  grid-template-columns: 350px 1fr 1fr;
+  grid-template-areas: "poster movie-info movie-info";
+  margin-bottom: 1.6rem;
+}
+
+.app-movie-info {
+  text-align: center;
+}
+
+.spinner {
+  text-align: center;
+}
+
+@media screen and (max-width: 1000px) {
+  .movie-info-container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "movie-info"
+      "poster";
+  }
+
+}
+

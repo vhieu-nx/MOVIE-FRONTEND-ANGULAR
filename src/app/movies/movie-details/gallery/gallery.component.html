@@ -1,0 +1,16 @@
+<div *ngIf="images.length > 2" class="gallery">
+  <div class="header">
+    <h4>Gallery</h4>
+  </div>
+  <carousel
+    [images]="images"
+    [autoplay]="true"
+    [autoplayInterval]="3000"
+    [objectFit]="'cover'"
+    [cellWidth]="'100%'"
+    [loop]="true"
+    [overflowCellsLimit]="1"
+    [counter]="true">
+  </carousel>
+</div>
+

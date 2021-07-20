@@ -1,0 +1,30 @@
+<ng-container *ngIf="movieService.isLoading">
+  <app-loading-spinner></app-loading-spinner>
+</ng-container>
+
+<div class="movie-list-container" *ngIf="genres$ | async as genres" [ngClass]="changeLayout()">
+    <ng-container *ngIf="!movieService.isLoading">
+      <app-movie-card (toBeDeletedMovie)="remove($event)"
+                      *ngFor="let movie of movies | paginate: {
+                      itemsPerPage: 20,
+                      currentPage: movieService.pageNumber,
+                      totalItems: movieService.totalResults
+                      }"
+                      [genres]="genres" [movie]="movie" >
+      </app-movie-card>
+    </ng-container>
+</div>
+
+<ng-container *ngIf="!movieService.isLoading">
+  <ng-container *ngIf="movies.length; else noMovies">
+    <pagination-controls *ngIf="movieService.totalResults > 20 && (currentUrl === 'movies' || currentUrl === 'search')"
+    (pageChange)="getPage($event)" class="pagination fade-in" (window:resize)="onResize()" maxSize="{{paginationMaxSize}}"></pagination-controls>
+  </ng-container>
+</ng-container>
+
+<ng-template #noMovies>
+  <p class="no-movies" *ngIf="currentUrl === 'movies' || currentUrl === 'search'">No movies matching these search criteria</p>
+  <p class="no-movies" *ngIf="currentUrl === 'favorites'">You haven't added any films to your favorites</p>
+  <p class="no-movies" *ngIf="currentUrl === 'watchlist'">You haven't added any films to your watchlist</p>
+</ng-template>
+
